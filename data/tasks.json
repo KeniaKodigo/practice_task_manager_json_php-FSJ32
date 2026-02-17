@@ -1,0 +1,50 @@
+[
+    {
+        "id_task": 1,
+        "title": "Induccion a POO",
+        "description": "aprender poo y solid",
+        "date": "2025-02-26",
+        "status": "Pendiente",
+        "id_employee": 2
+    },
+    {
+        "id_task": 2,
+        "title": "Editando...",
+        "description": "editando una tarea para ver si funciona",
+        "date": "2025-08-28",
+        "status": "Pendiente",
+        "id_employee": 2
+    },
+    {
+        "id_task": 3,
+        "title": "Cambio de precios en productos X",
+        "description": "haciendo otra prueba",
+        "date": "2025-08-28",
+        "status": "Pendiente",
+        "id_employee": 3
+    },
+    {
+        "id_task": 4,
+        "title": "Estilos al boton",
+        "description": "agregar nuevos estilos al boton de la seccion de inventario",
+        "date": "2025-08-28",
+        "status": "Pendiente",
+        "id_employee": 3
+    },
+    {
+        "id_task": "5",
+        "title": "Refactorizar metodo para calcular costos",
+        "description": "Cambiar formula para calcular costos",
+        "date": "2025-09-02",
+        "status": "Pendiente",
+        "id_employee": "4"
+    },
+    {
+        "id_task": "6",
+        "title": "estudiar arquitectura MVC",
+        "description": "arquitectura de 3 capas modelo, vista y controlador",
+        "date": "2025-09-02",
+        "status": "Pendiente",
+        "id_employee": "5"
+    }
+]

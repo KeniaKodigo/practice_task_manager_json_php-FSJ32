@@ -1,0 +1,42 @@
+[
+    {
+        "id_employee": 1,
+        "name": "Juan Pérez",
+        "phone": "503-7890-1234",
+        "email": "juan.perez@example.com",
+        "salary": 1200.50,
+        "password": "Kodigo"
+    },
+    {
+        "id_employee": 2,
+        "name": "María López",
+        "phone": "503-7654-5678",
+        "email": "maria.lopez@example.com",
+        "salary": 1500.75,
+        "password": "Kodigo"
+    },
+    {
+        "id_employee": 3,
+        "name": "Carlos Rodríguez",
+        "phone": "503-7123-9876",
+        "email": "carlos.rodriguez@example.com",
+        "salary": 1100.25,
+        "password": "Kodigo"
+    },
+    {
+        "id_employee": 4,
+        "name": "Ana Martínez",
+        "phone": "503-7986-5432",
+        "email": "ana.martinez@example.com",
+        "salary": 1300.00,
+        "password": "Kodigo"
+    },
+    {
+        "id_employee": 5,
+        "name": "Luis Gómez",
+        "phone": "503-7234-6789",
+        "email": "luis.gomez@example.com",
+        "salary": 1400.60,
+        "password": "Kodigo"
+    }
+]
