@@ -4,15 +4,14 @@
     //print_r($array_employees);
 
     //isset() => determinar si una variable esta vacia, existe o no
-    if(isset($_POST["id_task"], $_POST["title"], $_POST["description"], $_POST["id_employee"])){
+    if(isset($_POST["title"], $_POST["description"], $_POST["id_employee"])){
         //capturando datos mediante el "name" de cada etiqueta HTML
-        $id_task = $_POST["id_task"];
         $title = $_POST["title"];
         $descripcion = $_POST["description"];
         $employee = $_POST["id_employee"];
 
         //ejecutando el metodo para guardar la tarea
-        $task = new TaskModel($id_task, $title, $descripcion, $employee);
+        $task = new TaskModel($title, $descripcion, $employee);
         ManagerController::createTask($task);
     }
     
@@ -30,10 +29,6 @@
     <main class="container">
         <h1 class="my-4">Crear Tarea</h1>
         <form action="" method="POST">
-            <div class="mb-3">
-                <label for="">Id Tarea</label>
-                <input type="number" class="form-control" name="id_task" id="" >
-            </div>
             <div class="mb-3">
                 <label for="">Titulo</label>
                 <input type="text" class="form-control" name="title">

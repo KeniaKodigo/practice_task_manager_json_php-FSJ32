@@ -13,6 +13,8 @@ $task = TaskModel::all();
 $employees = EmployeeModel::all();
 //print_r($employees);
 
-$task1 = new TaskModel(100, "CONTANDO..","datos...",4);
-ManagerController::createTask($task1);
+//$task1 = new TaskModel(100, "CONTANDO..","datos...",4);
+//ManagerController::createTask($task1);
 //$task1->save();
+
+TaskModel::edit(10, "entrevistas", "hacer entrevistas de python");

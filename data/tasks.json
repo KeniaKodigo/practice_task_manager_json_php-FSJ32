@@ -73,16 +73,16 @@
     },
     {
         "id_task": 10,
-        "title": "CONTANDO..",
-        "description": "datos...",
+        "title": "entrevistas python",
+        "description": "hacer entrevistas de python",
         "date": "2026-02-23",
         "status": "Pendiente",
         "id_employee": 4
     },
     {
         "id_task": 11,
-        "title": "CONTANDO..",
-        "description": "datos...",
+        "title": "actividad extra",
+        "description": "resolviendo el metodo editar",
         "date": "2026-02-23",
         "status": "Pendiente",
         "id_employee": 4
@@ -94,5 +94,13 @@
         "date": "2026-02-24",
         "status": "Pendiente",
         "id_employee": 1
+    },
+    {
+        "id_task": 13,
+        "title": "Pruebas Unitarias PHP",
+        "description": "realizar pruebas unitarias al backend",
+        "date": "2026-02-24",
+        "status": "Pendiente",
+        "id_employee": 2
     }
 ]

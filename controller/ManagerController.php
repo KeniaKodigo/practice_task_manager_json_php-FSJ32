@@ -31,6 +31,21 @@ class ManagerController extends EmployeeController implements ICRUDTask{
 
     public static function editTask($id_task, $title, $description)
     {
-        
+        try{
+            TaskModel::edit($id_task, $title, $description);
+            header("location: ../views/listTasks.php");
+        }catch(Error $error){
+            return "Error al actualizar los datos de la tarea: " . $error;
+        }
+    }
+
+    public static function deleteTask($id_task)
+    {
+        try{
+            TaskModel::delete($id_task);
+            header("location: ../views/listTasks.php");
+        }catch(Error $error){
+            return "Error al eliminar una tarea: " . $error;
+        }
     }
 }

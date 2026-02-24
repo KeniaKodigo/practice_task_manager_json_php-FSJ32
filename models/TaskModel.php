@@ -11,9 +11,8 @@ class TaskModel{
     //atributo que va servir para manejar la url del json de las tareas
     private static $file_path = "../data/tasks.json";
 
-    public function __construct($id, $title, $description, $id_employee)
+    public function __construct($title, $description, $id_employee)
     {
-        $this->id_task = $id;
         $this->title = $title;
         $this->description = $description;
         $this->date = date("Y-m-d"); //capturamos la fecha actual
@@ -40,7 +39,10 @@ class TaskModel{
     //metodo para guardar una nueva tarea
     public function save(){
         $array_tasks = self::all(); //[]
+
+        //seleccionamos el ultimo elemento del arreglo de tareas
         $ultimo = end($array_tasks);
+
         //agregar un elemento al arreglo (array_push())
         $array_tasks[] = [
             "id_task" => $ultimo["id_task"] + 1,
@@ -58,7 +60,44 @@ class TaskModel{
         return "Se ha guardado correctamente";
     }
 
-    public function test(){
+    public static function edit($id, $title, $description){
+        $array_tasks = self::all();
 
+        //variable para validar si la tarea existe o no
+        $found_task = false;
+
+        //iteramos el arreglo de tareas para verificar y actualizar la tarea
+        foreach($array_tasks as &$task){ //referencia
+            if($task["id_task"] == $id){
+                //si el id coincide con alguna tarea del json, entonces actualizamos la variable
+                $found_task = true;
+                $task["title"] = $title;
+                $task["description"] = $description;
+                //saltamos las otras tareas (si es que hay) para evitar procesos innecesarios
+                break;
+            }
+        }
+
+        if($found_task){
+            //si la tarea se encontro, actualiza el JSON
+            $data_json = json_encode($array_tasks, JSON_PRETTY_PRINT);
+            file_put_contents(self::$file_path, $data_json);
+        }else{
+            return "No se encontro la tarea";
+        }
+    }
+
+    //eliminar una tarea
+    public static function delete($id_task){
+        //filtrar las tareas que sean diferentes al id de la tarea
+
+        $array_tasks = self::all();
+
+        $tasks = array_filter($array_tasks, function ($task) use ($id_task){
+            return $task["id_task"] != $id_task;
+        });
+
+        $data_json = json_encode($tasks, JSON_PRETTY_PRINT);
+        file_put_contents(self::$file_path, $data_json);
     }
 }
