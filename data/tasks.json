@@ -46,5 +46,53 @@
         "date": "2025-09-02",
         "status": "Pendiente",
         "id_employee": "5"
+    },
+    {
+        "id_task": 7,
+        "title": "Practica de patrones",
+        "description": "hacer una guia de ejercicios aplicando un patron",
+        "date": "2025-09-02",
+        "status": "en proceso",
+        "id_employee": 3
+    },
+    {
+        "id_task": 8,
+        "title": "PROBANDO FSJ32",
+        "description": "datos...",
+        "date": "2026-02-23",
+        "status": "Pendiente",
+        "id_employee": 4
+    },
+    {
+        "id_task": 9,
+        "title": "Desarrollar endpoint de obtener tareas",
+        "description": "Obtener la lista de tareas para eso hay que consumir la api JSONPlaceholder",
+        "date": "2026-02-23",
+        "status": "Pendiente",
+        "id_employee": 3
+    },
+    {
+        "id_task": 10,
+        "title": "CONTANDO..",
+        "description": "datos...",
+        "date": "2026-02-23",
+        "status": "Pendiente",
+        "id_employee": 4
+    },
+    {
+        "id_task": 11,
+        "title": "CONTANDO..",
+        "description": "datos...",
+        "date": "2026-02-23",
+        "status": "Pendiente",
+        "id_employee": 4
+    },
+    {
+        "id_task": 12,
+        "title": "validando id automaticos",
+        "description": "comprobando conteo de datos",
+        "date": "2026-02-24",
+        "status": "Pendiente",
+        "id_employee": 1
     }
 ]
