@@ -32,7 +32,7 @@
         "id_employee": 3
     },
     {
-        "id_task": "5",
+        "id_task": 5,
         "title": "Refactorizar metodo para calcular costos",
         "description": "Cambiar formula para calcular costos",
         "date": "2025-09-02",
@@ -40,7 +40,7 @@
         "id_employee": "4"
     },
     {
-        "id_task": "6",
+        "id_task": 6,
         "title": "estudiar arquitectura MVC",
         "description": "arquitectura de 3 capas modelo, vista y controlador",
         "date": "2025-09-02",

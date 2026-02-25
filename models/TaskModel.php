@@ -97,6 +97,9 @@ class TaskModel{
             return $task["id_task"] != $id_task;
         });
 
+        //reindexamos el array
+        $tasks = array_values($tasks);
+
         $data_json = json_encode($tasks, JSON_PRETTY_PRINT);
         file_put_contents(self::$file_path, $data_json);
     }
