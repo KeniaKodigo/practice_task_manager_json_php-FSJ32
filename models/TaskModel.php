@@ -36,6 +36,12 @@ class TaskModel{
         return [];
     }
 
+    //metodo que permite actualizar el json
+    private static function loadJSON($array_tasks){
+        $data_json = json_encode($array_tasks, JSON_PRETTY_PRINT);
+        file_put_contents(self::$file_path, $data_json);
+    }
+
     //metodo para guardar una nueva tarea
     public function save(){
         $array_tasks = self::all(); //[]
@@ -53,10 +59,7 @@ class TaskModel{
             "id_employee" => $this->id_employee
         ];
 
-        //formateando el arreglo de php a json
-        $data_json = json_encode($array_tasks, JSON_PRETTY_PRINT);
-        //actualizando el json para que agregue el nuevo elemento
-        file_put_contents(self::$file_path, $data_json);
+        self::loadJSON($array_tasks);
         return "Se ha guardado correctamente";
     }
 
@@ -80,8 +83,7 @@ class TaskModel{
 
         if($found_task){
             //si la tarea se encontro, actualiza el JSON
-            $data_json = json_encode($array_tasks, JSON_PRETTY_PRINT);
-            file_put_contents(self::$file_path, $data_json);
+            self::loadJSON($array_tasks);
         }else{
             return "No se encontro la tarea";
         }
@@ -93,14 +95,13 @@ class TaskModel{
 
         $array_tasks = self::all();
 
+        //array_tasks.filter(task => task.id_task != id_task)
         $tasks = array_filter($array_tasks, function ($task) use ($id_task){
             return $task["id_task"] != $id_task;
         });
 
         //reindexamos el array
         $tasks = array_values($tasks);
-
-        $data_json = json_encode($tasks, JSON_PRETTY_PRINT);
-        file_put_contents(self::$file_path, $data_json);
+        self::loadJSON($tasks);
     }
 }

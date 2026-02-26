@@ -2,7 +2,7 @@
 
 require_once "../models/EmployeeModel.php";
 
-class EmployeeController {
+class EmployeeController{
     protected int $id_employee;
     protected string $name;
     protected string $phone;
@@ -32,4 +32,5 @@ class EmployeeController {
             return "Error al obtener los empleados: " . $error;
         }
     }
+    
 }

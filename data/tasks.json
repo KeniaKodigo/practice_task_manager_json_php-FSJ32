@@ -9,7 +9,7 @@
     },
     {
         "id_task": 2,
-        "title": "Editando...",
+        "title": "editar contenedor imagenes",
         "description": "editando una tarea para ver si funciona",
         "date": "2025-08-28",
         "status": "Pendiente",
