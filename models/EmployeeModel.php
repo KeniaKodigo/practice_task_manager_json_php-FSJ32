@@ -1,16 +1,15 @@
 <?php
 
+
 class EmployeeModel{
-    private static $file_path = "../data/employee.json";
 
-    //ver empleados
+    //consulta para obtener los empleados de la base de datos
     public static function all(){
-
-        if(file_exists(self::$file_path)){
-            $data_json = file_get_contents(self::$file_path);
-            return json_decode($data_json, true);
-        }
-
-        return [];
+        //nos conectamos a la base de datos
+        $pdo = Connection::getInstance()->getConnection();
+        $query = $pdo->query("SELECT id_employee, name FROM employees");
+        $query->execute(); //true/false
+        $list_employees = $query->fetchAll(PDO::FETCH_ASSOC); //[arreglo asociativo]
+        return $list_employees;
     }
 }

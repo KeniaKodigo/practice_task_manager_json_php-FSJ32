@@ -44,23 +44,11 @@ class TaskModel{
 
     //metodo para guardar una nueva tarea
     public function save(){
-        $array_tasks = self::all(); //[]
-
-        //seleccionamos el ultimo elemento del arreglo de tareas
-        $ultimo = end($array_tasks);
-
-        //agregar un elemento al arreglo (array_push())
-        $array_tasks[] = [
-            "id_task" => $ultimo["id_task"] + 1,
-            "title" => $this->title,
-            "description" => $this->description,
-            "date" => $this->date,
-            "status" => $this->status,
-            "id_employee" => $this->id_employee
-        ];
-
-        self::loadJSON($array_tasks);
-        return "Se ha guardado correctamente";
+        $pdo = Connection::getInstance()->getConnection();
+        //prepare() -> preparar consultas y podemos utilizar parametros/argumentos
+        $query = $pdo->prepare("INSERT INTO tasks (title, description, date_task, status, id_employee) VALUES (?, ?, ?, ?, ?)");
+        $result = $query->execute(["$this->title", "$this->description", "$this->date", "$this->status", $this->id_employee]);
+        return $result;
     }
 
     public static function edit($id, $title, $description){
