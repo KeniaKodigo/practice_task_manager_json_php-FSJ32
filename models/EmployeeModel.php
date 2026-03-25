@@ -1,6 +1,5 @@
 <?php
 
-
 class EmployeeModel{
 
     //consulta para obtener los empleados de la base de datos
@@ -13,3 +12,5 @@ class EmployeeModel{
         return $list_employees;
     }
 }
+
+//return - print_r, console.log()

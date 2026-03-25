@@ -1,8 +1,8 @@
 <?php
 
 //llamando archivos externos
-require_once "EmployeeController.php";
-require_once "../interfaces/ICRUDTask.php";
+require_once __DIR__ . "/EmployeeController.php";
+require_once __DIR__ . "/../interfaces/ICRUDTask.php";
 
 class ManagerController extends EmployeeController implements ICRUDTask{
 

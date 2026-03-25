@@ -8,9 +8,6 @@ class TaskModel{
     public string $status;
     public int $id_employee;
 
-    //atributo que va servir para manejar la url del json de las tareas
-    private static $file_path = "../data/tasks.json";
-
     public function __construct($title, $description, $id_employee)
     {
         $this->title = $title;
@@ -20,76 +17,38 @@ class TaskModel{
         $this->id_employee = $id_employee;
     }
 
-    //obteniendo todos los datos del json
+    //obteniendo todos los datos de la base de datos
     public static function all(){
-        if(file_exists(self::$file_path)){
-            //si existe el json, obtenemos los datos
-            $data_json = file_get_contents(self::$file_path);
-            //print_r($data_json);
-            /**
-             * json_encode => codificar los datos a un json puro
-             * json_decode => decodificar los datos a un PHP (arreglo)
-             */
-            return json_decode($data_json, true); //[]
-        }
-
-        return [];
+        $pdo = Connection::getInstance()->getConnection();
+        $query = $pdo->query("SELECT tasks.id_task, tasks.title, tasks.description, tasks.status, tasks.id_employee, employees.name AS employee FROM tasks INNER JOIN employees ON tasks.id_employee = employees.id_employee ORDER BY tasks.id_task ASC");
+        $query->execute(); //true/false
+        $list_tasks = $query->fetchAll(PDO::FETCH_ASSOC); //[arreglo asociativo]
+        return $list_tasks;
     }
 
-    //metodo que permite actualizar el json
-    private static function loadJSON($array_tasks){
-        $data_json = json_encode($array_tasks, JSON_PRETTY_PRINT);
-        file_put_contents(self::$file_path, $data_json);
-    }
-
-    //metodo para guardar una nueva tarea
+    //metodo para guardar una nueva tarea en la base de datos
     public function save(){
         $pdo = Connection::getInstance()->getConnection();
         //prepare() -> preparar consultas y podemos utilizar parametros/argumentos
         $query = $pdo->prepare("INSERT INTO tasks (title, description, date_task, status, id_employee) VALUES (?, ?, ?, ?, ?)");
         $result = $query->execute(["$this->title", "$this->description", "$this->date", "$this->status", $this->id_employee]);
-        return $result;
+        return $result; //true/false
     }
 
     public static function edit($id, $title, $description){
-        $array_tasks = self::all();
-
-        //variable para validar si la tarea existe o no
-        $found_task = false;
-
-        //iteramos el arreglo de tareas para verificar y actualizar la tarea
-        foreach($array_tasks as &$task){ //referencia
-            if($task["id_task"] == $id){
-                //si el id coincide con alguna tarea del json, entonces actualizamos la variable
-                $found_task = true;
-                $task["title"] = $title;
-                $task["description"] = $description;
-                //saltamos las otras tareas (si es que hay) para evitar procesos innecesarios
-                break;
-            }
-        }
-
-        if($found_task){
-            //si la tarea se encontro, actualiza el JSON
-            self::loadJSON($array_tasks);
-        }else{
-            return "No se encontro la tarea";
-        }
+        $pdo = Connection::getInstance()->getConnection();
+        //prepare() -> preparar consultas y podemos utilizar parametros/argumentos
+        $query = $pdo->prepare("UPDATE tasks SET title = ?, description = ? WHERE id_task = ?");
+        $result = $query->execute(["$title", "$description", $id]);
+        return $result; //true/false
     }
 
     //eliminar una tarea
     public static function delete($id_task){
-        //filtrar las tareas que sean diferentes al id de la tarea
-
-        $array_tasks = self::all();
-
-        //array_tasks.filter(task => task.id_task != id_task)
-        $tasks = array_filter($array_tasks, function ($task) use ($id_task){
-            return $task["id_task"] != $id_task;
-        });
-
-        //reindexamos el array
-        $tasks = array_values($tasks);
-        self::loadJSON($tasks);
+        $pdo = Connection::getInstance()->getConnection();
+        //prepare() -> preparar consultas y podemos utilizar parametros/argumentos
+        $query = $pdo->prepare("DELETE FROM tasks WHERE id_task = ?");
+        $result = $query->execute([$id_task]);
+        return $result; //true/false
     }
 }

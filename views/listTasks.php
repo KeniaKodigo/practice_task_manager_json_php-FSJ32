@@ -48,7 +48,7 @@
                         <td><?php echo $task["id_task"];  ?></td>
                         <td><?php echo $task["title"];  ?></td>
                         <td><?php echo $task["status"];  ?></td>
-                        <td><?php echo $task["id_employee"];  ?></td>
+                        <td><?php echo $task["employee"];  ?></td>
                         <td>
                             <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $task["id_task"];  ?>"><i class="bi bi-pencil-square"></i></button>
                             <form action="" method="post">
