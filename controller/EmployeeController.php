@@ -33,5 +33,15 @@ class EmployeeController{
             return "Error al obtener los empleados: " . $error;
         }
     }
+
+    public static function getTaksByEmployee()
+    {
+        try{
+            $list_tasks = EmployeeModel::findTaskByEmployee();
+            return $list_tasks; //[]
+        }catch(Error $error){
+            return "Error al obtener los empleados: " . $error;
+        }
+    }
     
 }
